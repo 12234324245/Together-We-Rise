@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Futuristic Image Classifier</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #878787;
+        color: #ffffff;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    #header {
+        font-size: 2.5em;
+        margin-top: 50px;
+    }
+    #fileInputContainer {
+        margin-top: 20px;
+    }
+    #fileInput {
+        display: none;
+    }
+    #fileInputLabel {
+        cursor: pointer;
+        background-color: #0066ff;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    #fileInputLabel:hover {
+        background-color: #0044cc;
+    }
+    #imageContainer {
+        margin-top: 20px;
+    }
+    #uploadedImage {
+        max-width: 400px;
+        max-height: 400px;
+    }
+    #label-container {
+        margin-top: 20px;
+    }
+    .prediction {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+    #proceedButtonWrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    #proceedButton, #tryAgainButton {
+        cursor: pointer;
+        background-color: #0066ff;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    #proceedButton:hover, #tryAgainButton:hover {
+        background-color: #0044cc;
+    }
+    #resultMessage {
+        font-size: 1.2em;
+        margin-top: 20px;
+    }
+    .error-message {
+        background-color: #ff3333;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+<div id="header">Futuristic Image Classifier</div>
+<div id="fileInputContainer">
+    <input type="file" id="fileInput" accept="image/*">
+    <label for="fileInput" id="fileInputLabel">Choose Image</label>
+</div>
+<div id="imageContainer" style="display: none;">
+    <img id="uploadedImage" src="" alt="Uploaded Image">
+</div>
+<div id="label-container"></div>
+<div id="proceedButtonWrapper">
+    <button id="proceedButton" onclick="proceed()" style="display: none;">Proceed</button>
+    <button id="tryAgainButton" onclick="tryAgain()" style="display: none;">Try Again</button>
+</div>
+<div id="resultMessage" class="error-message" style="display: none;"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+<script type="text/javascript">
+    // the link to your model provided by Teachable Machine export panel
+    const URL = "https://teachablemachine.withgoogle.com/models/undGQD7s3/";
+
+    let model, labelContainer, maxPredictions, uploadedImageElement, contaminantProbability;
+
+    // Load the image model and setup the file input
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        // load the model and metadata
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        // Setup file input change event
+        const fileInput = document.getElementById('fileInput');
+        fileInput.addEventListener('change', handleFileSelect);
+
+        uploadedImageElement = document.getElementById("uploadedImage");
+
+        labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < maxPredictions; i++) { // and class labels
+            labelContainer.appendChild(document.createElement("div"));
+        }
+    }
+
+    // Handle file selection
+    function handleFileSelect(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = async function() {
+                uploadedImageElement.src = reader.result;
+                document.getElementById("fileInputContainer").style.display = "none";
+                document.getElementById("imageContainer").style.display = "block";
+                const image = new Image();
+                image.onload = async function() {
+                    await predict(image);
+                };
+                image.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // run the image through the image model
+    async function predict(image) {
+        // predict can take in an image, video or canvas html element
+        const prediction = await model.predict(image);
+        labelContainer.innerHTML = ""; // Clear previous predictions
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + (prediction[i].probability * 100).toFixed(2) + "%";
+            const predictionElement = document.createElement("div");
+            predictionElement.className = "prediction";
+            predictionElement.textContent = classPrediction;
+            labelContainer.appendChild(predictionElement);
+        }
+        contaminantProbability = prediction[1].probability; // Assuming contaminant class is the second class
+        if (contaminantProbability < 0.5) {
+            document.getElementById("proceedButton").style.display = "block";
+        } else {
+            document.getElementById("tryAgainButton").style.display = "block";
+            document.getElementById("resultMessage").style.display = "block";
+            document.getElementById("resultMessage").textContent = "Sorry! You cannot donate your food as it is contaminated.";
+        }
+    }
+
+    function proceed() {
+        window.location.href = '3.html';
+    }
+
+    function tryAgain() {
+        document.getElementById("fileInputContainer").style.display = "block";
+        document.getElementById("imageContainer").style.display = "none";
+        document.getElementById("tryAgainButton").style.display = "none";
+        document.getElementById("resultMessage").style.display = "none";
+        labelContainer.innerHTML = ""; // Clear previous predictions
+    }
+
+    // Call init function when the page loads
+    init();
+</script>
+</body>
+</html>
