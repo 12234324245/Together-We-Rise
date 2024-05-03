@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Information</title>
+<style>
+    .heading-container {
+        background-color: orange;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .heading {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+        margin: 0;
+    }
+    .container {
+        background-color: yellow;
+        padding: 40px;
+        border-radius: 20px;
+        width: 500px;
+        margin: 0 auto;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    label {
+        font-size: 28px;
+    }
+</style>
+</head>
+<body>
+
+<div class="heading-container">
+    <h1 class="heading">Free Service</h1>
+</div>
+
+<div class="container">
+    <form id="restaurant_form" action="thankyou.html" method="post">
+        <label for="restaurant_name">Restaurant Name:</label><br>
+        <input type="text" id="restaurant_name" name="restaurant_name"><br>
+        <label for="food_name">Food Name:</label><br>
+        <input type="text" id="food_name" name="food_name"><br>
+        <label for="food_time">Time of Food Preparation:</label><br>
+        <input type="text" id="food_time" name="food_time"><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+</body>
+</html>

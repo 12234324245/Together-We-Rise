@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High-Tech Food Donation System</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        animation: changeBgColor 10s infinite alternate;
+    }
+
+    @keyframes changeBgColor {
+        0% {
+            background-color: #000000;
+        }
+        50% {
+            background-color: #434343;
+        }
+        100% {
+            background-color: #878787;
+        }
+    }
+
+    .container {
+        background-color: #434343;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        max-width: 400px;
+        width: 80%;
+    }
+    h1 {
+        color: #ffffff;
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .buttons {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    button {
+        background-color: #6ee3b4;
+        color: #1a1a1a;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        margin: 0 15px;
+        transition: all 0.3s ease;
+    }
+    button:hover {
+        background-color: #4dd4a3;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Would you like to donate food?</h1>
+    <div class="buttons">
+        <button onclick="redirectToDonation()">Yes</button>
+        <button onclick="redirectToThankYou()">No</button>
+    </div>
+</div>
+
+<script>
+function redirectToDonation() {
+    window.location.href = "model.html";
+}
+
+function redirectToThankYou() {
+    window.location.href = "22.html";
+}
+</script>
+
+</body>
+</html>

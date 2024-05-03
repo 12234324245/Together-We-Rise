@@ -1,0 +1,70 @@
+﻿/* Style for the body */
+body {
+    background-color: #ffdac1; /* Pastel peach background */
+    font-weight: bold; /* Make font bold */
+}
+
+/* Style for the form container */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto; /* Center the form container */
+    padding: 20px;
+    border: 2px solid #77dd77; /* Pastel light green border */
+    border-radius: 10px;
+    background-color: #c1ffc1; /* Pastel light green background */
+}
+
+/* Style for form labels */
+.form-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px; /* Increase font size */
+    font-weight: bold; /* Make font bold */
+}
+
+/* Style for form inputs */
+.form-container input[type="text"],
+.form-container input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Style for submit button */
+.form-container button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6b8e23; /* Olive button color */
+    color: white;
+    font-size: 20px; /* Increase font size */
+    font-weight: bold; /* Make font bold */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Style for submit button on hover */
+.form-container button[type="submit"]:hover {
+    background-color: #556b2f; /* Darker olive on hover */
+}
+
+/* Style for different colored labels */
+#restaurant-name-label {
+    color: #ff5733; /* Reddish color */
+}
+
+#email-label {
+    color: #4169e1; /* Royal blue color */
+}
+
+#shelf-life-label {
+    color: #6a5acd; /* Slate blue color */
+}
+
+#preparation-time-label {
+    color: #2e8b57; /* Sea green color */
+}

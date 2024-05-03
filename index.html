@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Donation</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #2E8B57;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: changeColor 5s infinite alternate;
+        }
+
+        @keyframes changeColor {
+            0% {
+                background-color: #2E8B57;
+            }
+            50% {
+                background-color: #4682B4;
+            }
+            100% {
+                background-color: #2E8B57;
+            }
+        }
+
+        header img {
+            height: 100px; /* Adjust the height as needed */
+            margin-right: 10px;
+        }
+        header h1 {
+            font-size: 48px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+            font-size: 18px;
+        }
+        nav a:hover {
+            color: #2E8B57;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .hero-image {
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .hero-text {
+            text-align: center;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .blue-box {
+            background-color: #4682B4; /* Blue color */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 48px;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+        .btn {
+            background-color: #2E8B57;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #3CB371;
+        }
+        .feature {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .feature img {
+            width: 400px; /* Set width to 400px */
+            height: 300px; /* Set height to 300px */
+            object-fit: cover; /* Maintain aspect ratio and cover container */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+        .feature h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .feature p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="C:\Abhinav\html\WhatsApp Image 2024-04-28 at 3.27.43 PM.jpeg" alt="Logo">
+    <h1>TOGETHER WE RISE</h1>
+</header>
+
+<nav>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</nav>
+
+<div class="container">
+    <div class="hero-image">
+        <div class="hero-text">
+            <div class="blue-box">
+                <h2>Welcome to Food Donation</h2>
+                <p>Join us in our mission to fight hunger and reduce food waste. Every donation makes a difference!</p>
+                <a href="1.html" class="btn">Donate Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="feature">
+        <img src="https://gapio.in/wp-content/uploads/2022/05/1_4XRAX4obUOvMVqWibVCneQ.jpeg" alt="Feature 1">
+        <h2>Make a Difference</h2>
+        <p>By donating food, you can directly impact the lives of those in need and contribute to a healthier community.</p>
+    </div>
+
+    <div class="feature">
+        <img src="https://static.toiimg.com/thumb/msid-104221732,width-1280,height-720,resizemode-4/104221732.jpg" alt="Feature 2">
+        <h2>Reduce Food Waste</h2>
+        <p>Donating surplus food helps minimize waste and supports sustainable practices, benefiting both people and the planet.</p>
+    </div>
+</div>
+
+</body>
+</html>

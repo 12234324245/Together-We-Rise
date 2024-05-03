@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Styling</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Food</h1> <!-- Heading for the form -->
+
+    <form action="https://getform.io/f/pbqgynjb" method="POST">
+        <!-- Restaurant Name -->
+        <label for="restaurant-name">Restaurant Name:</label>
+        <input type="text" id="restaurant-name" name="restaurant_name" required>
+
+        <!-- Email Address -->
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <!-- Shelf Life of the Food -->
+        <label for="shelf-life">Shelf Life of the Food:</label>
+        <input type="text" id="shelf-life" name="shelf_life" required>
+
+        <!-- Time of Preparation -->
+        <label for="preparation-time">Time of Preparation:</label>
+        <input type="text" id="preparation-time" name="preparation_time" required>
+
+        <!-- Honeypot to prevent spams -->
+        <input type="hidden" name="_gotcha" style="display:none !important">
+
+        <!-- Submit Button -->
+        <button type="submit">Proceed</button>
+    </form>
+</div>
+
+</body>
+</html>
